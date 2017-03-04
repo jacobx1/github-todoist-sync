@@ -1,0 +1,59 @@
+﻿<Window x:Class="github_todoist_net.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:github_todoist_net"
+        mc:Ignorable="d"
+        Title="Github Todoist" Height="279" Width="564" ResizeMode="NoResize">
+    <Grid>
+        <Grid Background="#FFF1EDED" Height="145" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="95*"/>
+                <ColumnDefinition Width="278*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Github Token" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" FontWeight="Bold" Margin="10,0,0,0"/>
+            <PasswordBox x:Name="GithubToken" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="0" Height="Auto" Margin="0,0,10,0"/>
+            <Label Content="Todoist Token" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="1" FontWeight="Bold" Margin="10,0,0,0"/>
+            <PasswordBox x:Name="TodoistToken" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="0,0,10,0"/>
+            <Label Content="Github URL" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Row="2" FontWeight="Bold" Margin="10,0,0,0"/>
+            <TextBox x:Name="GithubURL" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1" Grid.Row="2" Margin="0,0,10,0"/>
+            <Button Content="Reload" VerticalAlignment="Stretch" Click="Connect_Click" HorizontalAlignment="Center" Width="75" Grid.ColumnSpan="2" Grid.Row="3" Margin="0,5"/>
+        </Grid>
+        <StatusBar VerticalAlignment="Bottom">
+            <StatusBarItem>
+                <Label x:Name="GithubUserName" Content="Disconnected" Foreground="Red"></Label>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <ProgressBar x:Name="SyncProgress" Height="20" Width="100"/>
+            </StatusBarItem>
+
+        </StatusBar>
+        <Grid Margin="10,150,10,37">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Repository" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <ComboBox x:Name="Repository" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="Repository_SelectionChanged" Grid.Row="1" Margin="5,0"/>
+            <Label Content="Milestone" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="1"/>
+            <ComboBox x:Name="GithubMilestones" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Grid.Row="1" Margin="5,0"/>
+            <Button Content="===&gt;" ToolTip="Send to Todoist" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Sync_Click" Grid.Column="2" Grid.Row="1" Margin="5,0"/>
+            <Label Content="Todoist Project" HorizontalAlignment="Stretch" VerticalAlignment="Center" Grid.Column="3"/>
+            <ComboBox x:Name="TodoistProjects" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="3" Grid.Row="1" Margin="5,0"/>
+        </Grid>
+
+    </Grid>
+</Window>
