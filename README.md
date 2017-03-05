@@ -1,5 +1,7 @@
 # GitHub to Todoist Issue Importer
 
+[![Build status](https://ci.appveyor.com/api/projects/status/yn4gej2oh84jsjeo?svg=true)](https://ci.appveyor.com/project/jacobx1/github-todoist-sync)
+
 Import open issues from GitHub milestones to a Todoist Project.
 
 ## Setup
