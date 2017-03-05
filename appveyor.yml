@@ -1,0 +1,21 @@
+version: 1.0.{build}
+configuration: Release
+platform: Any CPU
+before_build:
+- cmd: nuget restore
+build:
+  project: github-todoist-net.sln
+  verbosity: minimal
+after_build:
+- cmd: 7z a github-todoist-sync.zip %APPVEYOR_BUILD_FOLDER%\bin\Release\github-todoist-net.exe  %APPVEYOR_BUILD_FOLDER%\bin\Release\*.dll
+artifacts:
+- path: github-todoist-sync.zip
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: RrtCsuBQKhvJka7srFZHtpzE4lWyvTbaf+91JLtXb0zeROwq+uZOtGg9XP7/uXN4
+  artifact: github-todoist-sync.zip
+  draft: true
+  prerelease: true
+  on:
+    branch: master
