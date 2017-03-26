@@ -102,12 +102,17 @@ namespace github_todoist_net
             var projectItem = TodoistProjects.SelectedItem as TodoistItem;
             var repoItem = Repository.SelectedItem as RepositoryItem;
             
-            if (milestoneItem == null || projectItem == null || repoItem == null)
+            if (projectItem == null || repoItem == null)
             {
                 return;
             }
 
-            var issueRequest = new Octokit.RepositoryIssueRequest() { Milestone = milestoneItem.number.ToString(), Assignee = m_currentUser.Login, State = Octokit.ItemStateFilter.Open };
+            var issueRequest = new Octokit.RepositoryIssueRequest() { Assignee = m_currentUser.Login, State = Octokit.ItemStateFilter.Open };
+            if (milestoneItem != null && milestoneItem.number != 0)
+            {
+                issueRequest.Milestone = milestoneItem.ToString();
+            }
+
             var issues = await m_client.Issue.GetAllForRepository(repoItem.id, issueRequest);
 
             if (issues == null)
@@ -115,10 +120,18 @@ namespace github_todoist_net
                 return;
             }
 
+            var selectIssuesForm = new IssueSelect(issues);
+            if (!(selectIssuesForm.ShowDialog() ?? false))
+            {
+                return;
+            }
+
+            var selectedIssues = selectIssuesForm.SelectedIssues;
+
             SyncProgress.Maximum = issues.Count;
             SyncProgress.Value = 0;
 
-            foreach (var issue in issues)
+            foreach (var issue in selectedIssues)
             {
                 var title = String.Format("**{0}** [{1}]({2})", issue.Number, issue.Title, issue.HtmlUrl.ToString());
 
@@ -143,6 +156,9 @@ namespace github_todoist_net
             {
                 return;
             }
+
+            GithubMilestones.Items.Add(new MilestoneItem() { name = "None", number = 0 });
+            GithubMilestones.SelectedIndex = 0;
 
             var milestones = await m_client.Issue.Milestone.GetAllForRepository(item.id);
             foreach (var milestone in milestones)
