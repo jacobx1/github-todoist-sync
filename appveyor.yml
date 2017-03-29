@@ -7,7 +7,7 @@ build:
   project: github-todoist-net.sln
   verbosity: minimal
 after_build:
-- cmd: 7z a github-todoist-sync.zip %APPVEYOR_BUILD_FOLDER%\bin\Release\github-todoist-net.exe  %APPVEYOR_BUILD_FOLDER%\bin\Release\*.dll
+- cmd: 7z a github-todoist-sync.zip %APPVEYOR_BUILD_FOLDER%\bin\Release\ILMerge\github-todoist-net.exe
 artifacts:
 - path: github-todoist-sync.zip
 deploy:
