@@ -128,7 +128,7 @@ namespace github_todoist_net
 
             var selectedIssues = selectIssuesForm.SelectedIssues;
 
-            SyncProgress.Maximum = issues.Count;
+            SyncProgress.Maximum = selectedIssues.Count;
             SyncProgress.Value = 0;
 
             foreach (var issue in selectedIssues)
