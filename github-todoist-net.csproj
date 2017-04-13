@@ -36,11 +36,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Octokit, Version=0.24.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Octokit.0.24.1-alpha0001\lib\net45\Octokit.dll</HintPath>
+      <HintPath>packages\Octokit.0.24.0\lib\net45\Octokit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -53,8 +55,9 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Todoist.Net, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Todoist.Net.1.1.2\lib\net45\Todoist.Net.dll</HintPath>
+    <Reference Include="Todoist.Net, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Todoist.Net.1.1.4\lib\net45\Todoist.Net.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
