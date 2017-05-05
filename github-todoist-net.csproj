@@ -55,8 +55,8 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="Todoist.Net, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\Todoist.Net.1.1.4\lib\net45\Todoist.Net.dll</HintPath>
+    <Reference Include="Todoist.Net, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Todoist.Net.1.2.0\lib\net45\Todoist.Net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="WindowsBase" />
