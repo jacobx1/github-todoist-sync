@@ -110,7 +110,7 @@ namespace github_todoist_net
             var issueRequest = new Octokit.RepositoryIssueRequest() { Assignee = m_currentUser.Login, State = Octokit.ItemStateFilter.Open };
             if (milestoneItem != null && milestoneItem.number != 0)
             {
-                issueRequest.Milestone = milestoneItem.ToString();
+                issueRequest.Milestone = milestoneItem.number.ToString();
             }
 
             var issues = await m_client.Issue.GetAllForRepository(repoItem.id, issueRequest);
