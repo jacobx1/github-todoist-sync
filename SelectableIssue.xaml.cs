@@ -42,6 +42,11 @@ namespace github_todoist_net
             {
                 return Selected.IsChecked ?? false;
             }
+
+            set
+            {
+                Selected.IsChecked = value;
+            }
         }
     }
 }

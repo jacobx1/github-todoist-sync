@@ -30,7 +30,7 @@ namespace github_todoist_net
 
             foreach (var issue in issues)
             {
-                var itemBox = new SelectableIssue(issue);
+                var itemBox = new SelectableIssue(issue) { Checked = true };
                 IssuesList.Items.Add(itemBox);
             }
         }
