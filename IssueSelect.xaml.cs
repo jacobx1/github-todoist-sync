@@ -19,7 +19,7 @@ namespace github_todoist_net
     /// </summary>
     public partial class IssueSelect : Window
     {
-        public IssueSelect(IReadOnlyList<Octokit.Issue> issues)
+        public IssueSelect(IEnumerable<Octokit.Issue> issues)
         {
             InitializeComponent();
 

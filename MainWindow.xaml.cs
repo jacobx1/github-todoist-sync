@@ -2,6 +2,9 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Linq;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace github_todoist_net
 {
@@ -120,7 +123,14 @@ namespace github_todoist_net
                 return;
             }
 
-            var selectIssuesForm = new IssueSelect(issues);
+            // Get current todoist items and capture URLs
+            var items = await m_todoistClient.Items.GetAsync();
+            var itemUrlLookup = new HashSet<string>(items.Select(x => Regex.Replace(x.Content, @"^.*\((http.*)\)$", "$1")));
+
+            // Filter issues for those which do not currently have their URL in Todoist
+            var filteredIssues = issues.Where(x => !itemUrlLookup.Contains(x.HtmlUrl.ToString()));
+
+            var selectIssuesForm = new IssueSelect(filteredIssues);
             if (!(selectIssuesForm.ShowDialog() ?? false))
             {
                 return;
